@@ -26,7 +26,7 @@ def render():
         cur = conn.cursor()
         sql = '''SELECT * FROM BATTERY'''
         cur.execute(sql)
-        rows = cur.fetchall()
+        rows = cur.fetchall()[::-1]
     print(rows)
     return render_template("show.html", rowCount=len(rows), rows=rows)
 
@@ -39,7 +39,7 @@ def battery():
             cur = conn.cursor()
             sql = '''SELECT * FROM BATTERY'''
             cur.execute(sql)
-            rows = cur.fetchall()
+            rows = cur.fetchall()[::-1]
         print(rows)
         return jsonify({"rows": rows})
     elif request.method == "POST":
