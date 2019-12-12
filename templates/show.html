@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Battery Master</h2>
+
+<table>
+  <tr>
+    <th>CHARGE_LEVEL</th>
+    <th>CURRENT</th>
+    <th>REMAINING_CAP</th>
+    <th>VOLTAGE</th>
+    <th>HEALTH_LEVEL</th>
+    <th>CURRENT_AV</th>
+    <th>BATTERY_POWER</th>
+    <th>CELL_TEMP</th>
+  </tr>
+
+    {% for index in range(rowCount) %}
+      <tr>
+        <td>{{rows[index][0]}}</td>
+        <td>{{rows[index][1]}}</td>
+        <td>{{rows[index][2]}}</td>
+        <td>{{rows[index][3]}}</td>
+        <td>{{rows[index][4]}}</td>
+        <td>{{rows[index][5]}}</td>
+        <td>{{rows[index][6]}}</td>
+        <td>{{rows[index][7]}}</td>
+      </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>

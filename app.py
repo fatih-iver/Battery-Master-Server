@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import sqlite3
 
 # command: flask run --host=0.0.0.0
@@ -17,6 +17,18 @@ app = Flask(__name__)
 @app.route('/')
 def root():
     return 'Battery!'
+
+@app.route('/show')
+def render():
+    rows = []
+    conn = create_connection('battery.db')
+    if conn:
+        cur = conn.cursor()
+        sql = '''SELECT * FROM BATTERY'''
+        cur.execute(sql)
+        rows = cur.fetchall()
+    print(rows)
+    return render_template("show.html", rowCount=len(rows), rows=rows)
 
 @app.route('/battery', methods = ['GET', 'POST'])
 def battery():
